@@ -46,3 +46,35 @@ function getComputerChoice() {
         else result = "Draw!"
         return result;
     }
+
+    function game() {
+        let computerScore = 0;
+        let playerScore = 0;
+        //Run the game 5 times and log the result
+        for (let i = 0; i < 5; i++) {
+        let gameResult = playRound(
+            getComputerChoice(),
+            prompt("Rock, Paper or Scissors?").toLowerCase()
+            )
+            console.log(gameResult)
+        // Add a point to computer or player score depending on who wins
+            if (gameResult.includes("You win!")) {
+            playerScore++;
+            }
+            else if (gameResult.includes("You lose!")) {
+            computerScore++;
+            }
+        // If 5 games have been played, declare the winner or if it ended in a Draw
+            if (i === 4 & computerScore > playerScore) {
+                console.log("Computer Wins!")
+            }
+            else if (i === 4 & computerScore < playerScore) {
+                console.log("Player Wins!")
+            }
+            else if (i === 4 & computerScore + playerScore != 5) {
+                console.log("It's a draw!")
+            }
+            }
+        }
+    
+    game()
